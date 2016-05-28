@@ -37,8 +37,15 @@ object Main {
 
     println()
 
-    for (i <- 1 to 3; from = 4-i; j <- from to 3 )
+    for (i <- 1 to 3; from = 4 - i; j <- from to 3)
       print((10 * i + j) + " ")
+
+    println()
+
+   val a =  for (i <- 1 to 10)
+      yield i % 3
+
+    println(a)
   }
 
   def main(args: Array[String]): Unit = {
