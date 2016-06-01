@@ -1,7 +1,8 @@
 package com.cds.learnscala
 
+import java.text.MessageFormat
+
 import scala.io.StdIn
-import scala.math._
 
 object Main {
 
@@ -42,17 +43,48 @@ object Main {
 
     println()
 
-   val a =  for (i <- 1 to 10)
+    val a = for (i <- 1 to 10)
       yield i % 3
 
     println(a)
+  }
+
+  def decorate(str: String, left: String = "[", right: String = "]") = {
+    println(left + str + right)
+  }
+
+  def sum(args: Int*) = {
+    var result = 0
+    for (arg <- args) {
+      result += arg
+    }
+    println(result)
+  }
+
+  def recursiveSum(args: Int*): Int = {
+    if (args.isEmpty) 0
+    else {
+      args.head + recursiveSum(args.tail: _*)
+    }
+  }
+
+  def testMessageFormat(): Unit = {
+    val str = MessageFormat
+      .format("The answer to {0} is {1}", "everything", 42.asInstanceOf[AnyRef])
+    println(str)
   }
 
   def main(args: Array[String]): Unit = {
     //    testPrint()
     //    testReadLine()
     //    testFor()
-    testFor2()
+    //    testFor2()
+    //    decorate("abc")
+    //    sum(2, 3, 4)
+    //    sum(1 to 6: _*)
+    //    recursiveSum(3, 4, 5, 6)
+
+    testMessageFormat()
   }
 
 
