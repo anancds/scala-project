@@ -1,7 +1,10 @@
 package com.cds.learnscala.array
 
+import java.awt.datatransfer.{SystemFlavorMap, DataFlavor}
+
 import scala.collection.mutable.ArrayBuffer
 import scala.math.random
+import java.util.TimeZone._
 
 object ArrayTest {
 
@@ -47,11 +50,59 @@ object ArrayTest {
     t.toArray
   }
 
+  def reorderArray1(arr: Array[Int]): Array[Int] = {
+    val t = arr.toBuffer
+    val result = for (i <- arr.indices)
+      yield if (i % 2 == 0 && i + 1 < t.length) {
+        t(i + 1)
+      } else if (i % 2 == 0 && i + 1 > t.length) {
+        t(i)
+      } else {
+        t(i - 1)
+      }
+
+    result.toArray
+  }
+
+  def reorderAtrray2(arr: Array[Int]): Array[Int] = {
+    val a = arr.filter(_ > 0)
+    val b = arr.filter(_ <= 0)
+    val c = a.toBuffer
+    c ++= b
+    c.toArray
+    //    arr.filter(_ > 0) ++= arr.filter(_ <= 0)
+  }
+
+  def averageArray(arr: Array[Double]): Double = {
+    arr.sum / arr.length
+  }
+
+  def reverseArray(arr: Array[Int]): Array[Int] = {
+    arr.reverse
+  }
+
+  def distinctArray(arr: Array[Int]): Array[Int] = {
+    arr.distinct
+  }
+
+  def timeZone(): Unit = {
+    val t = for (i <- getAvailableIDs) yield
+      getTimeZone(i).getDisplayName
+    println(t.toBuffer)
+  }
+
+  def flavorMap(): Unit = {
+    val flavors = SystemFlavorMap.getDefaultFlavorMap.asInstanceOf[SystemFlavorMap]
+    println(flavors.getNativesForFlavor(DataFlavor.imageFlavor).toArray.toBuffer.mkString(" | "))
+  }
+
   def main(args: Array[String]) {
     //    testArrayBuffer()
-
-
-//    println(randomArray(10).toBuffer)
+    //    println(randomArray(10).toBuffer)
+    //    println(reorderAtrray2(Array(1, 2, 3, -2, 4, 5, -1, 0)).toBuffer)
+    //    println(distinctArray(Array(1, 2, 3, 2, 1)).toBuffer)
+    //    timeZone()
+    flavorMap()
   }
 
 }
