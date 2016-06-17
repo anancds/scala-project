@@ -66,10 +66,11 @@ object Json4sDemo {
       JField("age", JInt(age)) <- child
       if age > 4
     } yield age
+
     val name = for{
       JString(name) <- json4
     } yield name
-    println(ages)
+    println("ages:" + ages)
     //List(joe, Mary, Mazy)
     println(name)
     //{"name":"joe","name":"Mary","name":"Mazy"}
@@ -98,7 +99,7 @@ object Json4sDemo {
     val json6=json5 transformField {
       case ("first_name", x) => ("firstName", x)
     }
-    println(json6.extract[Person])
+    println("json6:" + json6.extract[Person])
     println(json5.camelizeKeys.extract[Person])
 
     //================ xml 2 json ===================
