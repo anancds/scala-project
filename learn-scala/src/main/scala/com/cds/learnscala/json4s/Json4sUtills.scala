@@ -13,7 +13,7 @@ case class field3(i1: Int, i2: Int)
 object Json4sUtills {
 
   var query: String = _
-  var feature: List[String] = _
+  var feature: List[Double] = _
   var rowCount: BigInt = _
   var offSet: BigInt = _
 
@@ -31,10 +31,12 @@ object Json4sUtills {
     val _offSet: List[BigInt] = for (JObject(queries) <- json; JField("offSet", JInt(q)) <- queries) yield q
     offSet = _offSet.headOption.orNull
 
-    val _feature: List[String] = for (JObject(queries) <- json; JField("feature", JString(q)) <- queries) yield q
+    val _feature: List[List[JValue]] = for (JObject(queries) <- json; JField("feature", JArray
+      (q)) <- queries) yield q
     val _featureTmp = _feature.headOption.orNull
-    if (_featureTmp != null) {
-      feature = _featureTmp.split(" ").toList
+
+    if (_featureTmp != null && _featureTmp.isInstanceOf[List[JDouble]]) {
+      feature = for (JDouble(a) <- _featureTmp) yield a
     }
   }
 
