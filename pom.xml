@@ -13,6 +13,7 @@
     <module>learn-scala</module>
     <module>learn-scalacheck</module>
     <module>learn-spray</module>
+    <module>progscala2</module>
   </modules>
 
 
