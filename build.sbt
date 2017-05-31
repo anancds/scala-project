@@ -10,6 +10,7 @@ libraryDependencies += "org.scalatest" % "scalatest_2.11" % "3.0.1"
 libraryDependencies += "org.scalactic" %% "scalactic" % "3.0.1"
 libraryDependencies += "org.scalamock" % "scalamock-scalatest-support_2.11" % "3.5.0"
 libraryDependencies += "org.json4s" % "json4s-jackson_2.11" % "3.3.0"
+libraryDependencies += "org.scalacheck" % "scalacheck_2.11" % "1.13.5"
 libraryDependencies ++= {
   val sprayV = "1.3.3"
   Seq(

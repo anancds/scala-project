@@ -7,7 +7,32 @@ trait RNG {
   def nextInt: (Int, RNG) // Should generate a random `Int`. We'll later define other functions in terms of `nextInt`.
 }
 
+object test {
+
+  def rollDie: Int  = {
+    val rng = new scala.util.Random
+    rng.nextInt(6)
+  }
+
+  def randomPari(rng: RNG) : (Int, Int)  = {
+    val (i1, _) = rng.nextInt
+    val (i2, _) = rng.nextInt
+    (i1, i2)
+  }
+
+
+  def main(args: Array[String]): Unit = {
+    val rng = RNG.Simple(42)
+    println(randomPari(rng))
+    println(rollDie)
+    val res = rng.nextInt
+    println(res._1)
+    println(res._2)
+  }
+}
+
 object RNG {
+
   // NB - this was called SimpleRNG in the book text
 
   case class Simple(seed: Long) extends RNG {
@@ -17,6 +42,7 @@ object RNG {
       val n = (newSeed >>> 16).toInt // `>>>` is right binary shift with zero fill. The value `n` is our new pseudo-random integer.
       (n, nextRNG) // The return value is a tuple containing both a pseudo-random integer and the next `RNG` state.
     }
+
   }
 
   // We need to be quite careful not to skew the generator.
