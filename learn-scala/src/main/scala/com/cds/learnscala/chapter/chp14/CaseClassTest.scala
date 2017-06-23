@@ -1,4 +1,4 @@
-package com.cds.learnscala.chp14
+package com.cds.learnscala.chapter.chp14
 
 import scala.None
 

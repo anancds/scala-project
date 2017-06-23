@@ -1,4 +1,4 @@
-package com.cds.learnscala.chap18
+package com.cds.learnscala.chapter.chap18
 
 class Bug(var pos: Int = 0) {
 

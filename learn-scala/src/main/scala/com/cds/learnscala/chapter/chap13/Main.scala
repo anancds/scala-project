@@ -1,4 +1,4 @@
-package com.cds.learnscala.chap13
+package com.cds.learnscala.chapter.chap13
 
 import scala.collection.immutable.SortedSet
 import scala.collection.mutable
