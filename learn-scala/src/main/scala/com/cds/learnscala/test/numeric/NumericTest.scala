@@ -13,6 +13,11 @@ object NumericTest {
     val test = null
     Log.info(test)
     println(test)
+
+    val value: Integer = new Integer((100))
+    println(value.asInstanceOf[Long])
+    val value1 = value.asInstanceOf[Long]
+    println(value1)
   }
 
 }
